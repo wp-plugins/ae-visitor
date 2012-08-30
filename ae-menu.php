@@ -1,5 +1,5 @@
 <?php
-if(!function_exists('find_my_menu_item')) {
+if(!function_exists('find_ae_menu')) {
 	function find_ae_menu($handle, $sub = false) {
 		if(!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { return false; }
 		global $menu, $submenu;

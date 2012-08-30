@@ -16,7 +16,6 @@ function ae_visitor_install(){
 }
 function ae_visitor_uninstall(){
 	delete_option('ae_visitor_data');
-	delete_option('ae_visitor_data');
 	delete_option('ae_visitor_day');
 	delete_option('ae_visitor_yesterday');
 	delete_option('ae_visitor_week');

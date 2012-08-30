@@ -31,14 +31,19 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 1.0 =
+= 1.2 =
 
-fix title widgets
-fix cookie
+fix AE Menu
+fix Un-Install
 
 = 1.1 =
 
 Plug-in is now compatible upto wordpress version 3.4.x
+
+= 1.0 =
+
+fix title widgets
+fix cookie
 
 == Credits ==
 
