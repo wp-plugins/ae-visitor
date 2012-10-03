@@ -21,8 +21,9 @@ if(!function_exists('find_ae_menu')) {
 if(!function_exists('ae_add_menu_page')) {
 	function ae_add_menu_page() {
 		if(!find_ae_menu('ae_menu_page')) {
-			add_menu_page('AE Widget/Plugin', 'AE Widget/Plugin', 0, 'ae_menu_page', 'ae_menu_page_options', plugins_url('ae-visitor/ae-icon.png') );
+			add_menu_page('AE Plugins', 'AE Plugins', 0, 'ae_menu_page', 'ae_menu_page_options', plugins_url('ae-visitor/ae-icon.png') );
 		}
+		ae_add_submenu_page('AE Plugins', 'Dashboard', 0, 'ae_menu_page', 'ae_menu_page_options');
 	}
 }
 
