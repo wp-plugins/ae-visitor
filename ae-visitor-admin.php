@@ -1,7 +1,7 @@
 <?php
 function ae_visitor_menu() {
 	ae_add_menu_page();
-	ae_add_submenu_page('AE Visitor Options', 'AE Visitor', 0, 'ae_visitor', 'ae_visitor_options');
+	ae_add_submenu_page('AE Visitor Options', 'Visitor', 0, 'ae_visitor', 'ae_visitor_options');
 }
 function ae_visitor_options() {
 	$ae_error_msg = '';
