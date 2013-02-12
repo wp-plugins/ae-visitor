@@ -1,7 +1,7 @@
 <?php
 function ae_visitor_menu() {
 	ae_add_menu_page();
-	ae_add_submenu_page('AE Visitor Options', 'Visitor', 0, 'ae_visitor', 'ae_visitor_options');
+	ae_add_submenu_page('AE Visitor Options', 'Visitor', 10, 'ae_visitor', 'ae_visitor_options');
 }
 function ae_visitor_options() {
 	$ae_error_msg = '';
@@ -40,27 +40,30 @@ function ae_visitor_options() {
     <h3>Main Settings</h3>
     <table class="form-table">
       <tr valign="top" style="background-color:#eee;">
-        <th scope="row">Start Visitor of Day</th>
+        <th>Start Visitor of Day</th>
         <td><input name="ae_visitor_day" type="text" id="ae_visitor_day" value="<?php echo get_option('ae_visitor_day'); ?>" /></td>
       </tr>
       <tr valign="top">
-        <th scope="row">Start Visitor of Yesterday</th>
+        <th>Start Visitor of Yesterday</th>
         <td><input name="ae_visitor_yesterday" type="text" id="ae_visitor_yesterday" value="<?php echo get_option('ae_visitor_yesterday'); ?>" /></td>
       </tr>
       <tr valign="top" style="background-color:#eee;">
-        <th scope="row">Start Visitor of Week</th>
+        <th>Start Visitor of Week</th>
         <td><input name="ae_visitor_week" type="text" id="ae_visitor_week" value="<?php echo get_option('ae_visitor_week'); ?>" /></td>
       </tr>
       <tr valign="top">
-        <th scope="row">Start Visitor of Month</th>
+        <th>Start Visitor of Month</th>
         <td><input name="ae_visitor_month" type="text" id="ae_visitor_month" value="<?php echo get_option('ae_visitor_month'); ?>" /></td>
       </tr>
       <tr valign="top" style="background-color:#eee;">
-        <th scope="row">Start Visitor of All</th>
+        <th>Start Visitor of All</th>
         <td><input name="ae_visitor_all" type="text" id="ae_visitor_all" value="<?php echo get_option('ae_visitor_all'); ?>" /></td>
       </tr>
+      <tr valign="top">
+        <th></th>
+        <td><p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="<?php _e('Update Changes'); ?>"  /></p></td>
+      </tr>
     </table>
-    <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="<?php _e('Update Changes'); ?>"  /></p>
   </form>
 </div>
 <?php

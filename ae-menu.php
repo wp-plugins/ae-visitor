@@ -77,7 +77,7 @@ if(!function_exists('ae_menu_page_options')) {
   <div id="icon-link-manager" class="icon32"><br /></div>
   <h2>AE Site</h2>
   <div class="wrap">
-    <p>Created by Adi Wicaksana P. <br />Expert of Programmer and Network</p>
+    <p>Created by Adi Wicaksana P. <br />Expert of Programming and Networking</p>
     <h4><a href="http://www.aldo-expert.com/" target="_blank">Please Visit Aldo-Expert.com &raquo;</a></h4>
   </div>
 </div>
