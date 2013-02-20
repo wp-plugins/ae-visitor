@@ -31,6 +31,10 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
+= 1.5 =
+
+fix AE Menu icon
+
 = 1.4 =
 
 fix some bug
