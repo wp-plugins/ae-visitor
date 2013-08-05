@@ -88,27 +88,27 @@ class ae_visitor extends WP_Widget {
 <table align="center" cellpadding="0" cellspacing="0" width="90%">
   <tbody>
     <tr align="left">
-      <td><img class="mvc_peopleImg" src="/wp-content/plugins/ae-visitor/peoples/vtoday.gif" alt="Today" title="Today"/></td>
+      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vtoday.gif" alt="Today" title="Today"/></td>
       <td>Today</td>
       <td align="right"><?php echo number_format($values['startDay'], 0); ?></td>
     </tr>
     <tr align="left">
-      <td><img class="mvc_peopleImg" src="/wp-content/plugins/ae-visitor/peoples/vyesterday.gif" alt="Yesterday" title="Yesterday"/></td>
+      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vyesterday.gif" alt="Yesterday" title="Yesterday"/></td>
       <td>Yesterday</td>
       <td align="right"><?php echo number_format($values['startYest'], 0); ?></td>
     </tr>
     <tr align="left">
-      <td><img class="mvc_peopleImg" src="/wp-content/plugins/ae-visitor/peoples/vweek.gif" alt="This Week" title="This Week"/></td>
+      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vweek.gif" alt="This Week" title="This Week"/></td>
       <td>This Week</td>
       <td align="right"><?php echo number_format($values['startWeek'], 0); ?></td>
     </tr>
     <tr align="left">
-      <td><img class="mvc_peopleImg" src="/wp-content/plugins/ae-visitor/peoples/vmonth.gif" alt="This Month" title="This Month"/></td>
+      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vmonth.gif" alt="This Month" title="This Month"/></td>
       <td>This Month</td>
       <td align="right"><?php echo number_format($values['startMonth'], 0); ?></td>
     </tr>
     <tr align="left">
-      <td><img class="mvc_peopleImg" src="/wp-content/plugins/ae-visitor/peoples/vall.gif" alt="All Days" title="All Days"/></td>
+      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vall.gif" alt="All Days" title="All Days"/></td>
       <td>All Days</td>
       <td align="right"><?php echo number_format($values['startAll'], 0); ?></td>
     </tr>
