@@ -1,11 +1,11 @@
 === AE Visitor ===
 
-Contributors: Adi Wicaksana P.
+Contributors: Adi Wicaksana
 Donate link: http://www.aldo-expert.com
 Tags: visitor, counter, web visit, web counter, simple counter
-Requires at least: 3.2
-Tested up to: 3.5
-Stable tag: 1.5
+Requires at least: 3.5
+Tested up to: 3.9
+Stable tag: 1.6
 
 very simple visitor plugins enables you to track number of visitors online in an easy to install.  
 

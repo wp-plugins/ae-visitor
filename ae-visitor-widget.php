@@ -1,155 +1,101 @@
-<?php
-class ae_visitor_counter {
-	function __construct() {
-		$this->ae_visitor_counter();
-	}
-	function ae_visitor_counter() {
-		
-	}
-	function getData() {
-		$values	= array(
-			'title'			=> $title ,
-			'startDay'		=> get_option('ae_visitor_day') ,
-			'startYest'		=> get_option('ae_visitor_yesterday') ,
-			'startWeek'		=> get_option('ae_visitor_week') ,
-			'startMonth'	=> get_option('ae_visitor_month') ,
-			'startAll'		=> get_option('ae_visitor_all') ,
-			
-			'DayUpdate'		=> get_option('ae_visitor_day_update') ,
-			'WeekUpdate'	=> get_option('ae_visitor_week_update') ,
-			'MonthUpdate'	=> get_option('ae_visitor_month_update') ,
-		);
-		return $values;
-	}
-	function counter() {
-		$values = $this->getData();
-
-		$ae_visitor_update = ( isset( $_COOKIE[ 'ae_visitor_update' ] ) ) ? $_COOKIE[ 'ae_visitor_update' ] : 0 ;
-		if( $ae_visitor_update != '1' ) {
-			setcookie('ae_visitor_update', '1', time()+(60*15), COOKIEPATH, COOKIE_DOMAIN, false);
-
-			if( $values['DayUpdate']!=(date("N")) ) { // for reset to day
-				update_option('ae_visitor_day_update', (date("N")) );
-				update_option('ae_visitor_day', 0 );
-				$values['startYest']	= $values['startDay'];
-				$values['startDay']		= 0;
-			}
-			if( $values['WeekUpdate']!=(date("W")) ) { // for reset this week
-				update_option('ae_visitor_week_update', (date("W")) );
-				update_option('ae_visitor_week', 0 );
-				$values['startWeek']	= 0;
-			}
-			if( $values['MonthUpdate']!=(date("n")) ) { // for reset this month
-				update_option('ae_visitor_month_update', (date("n")) );
-				update_option('ae_visitor_month', 0 );
-				$values['startMonth']	= 0;
-			}
-
-			$values['startDay']++;
-			//$values['startYest']++;
-			$values['startWeek']++;
-			$values['startMonth']++;
-			$values['startAll']++;
-
-			update_option('ae_visitor_day', $values['startDay']);
-			update_option('ae_visitor_yesterday', $values['startYest']);
-			update_option('ae_visitor_week', $values['startWeek']);
-			update_option('ae_visitor_month', $values['startMonth']);
-			update_option('ae_visitor_all', $values['startAll']);
-		}
-	}
-}
-class ae_visitor extends WP_Widget {
-	function __construct() {
-		$this->ae_visitor();
-	}
-	function ae_visitor() {
-		$widget_ops = array(
-			'classname' => 'Widget_ae_visitor',
-			'description' => __('Display guest visitor of your web in day, week, month, and all.', 'ae-visitor')
-		);
-		//Create widget
-		$this->WP_Widget('aevisitor', __('AE Visitor', 'ae-visitor'), $widget_ops);
-	}
-
-	function widget($args, $instance) {
-		extract($args, EXTR_SKIP);
-		echo $before_widget;
-		$title = empty($instance['title']) ? __('AE Visitor', 'ae-visitor') : apply_filters('widget_title', $instance['title']) ;
-
-		$aeVC = new ae_visitor_counter();
-		$values = $aeVC->getData();
-
-		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
-		};
-		echo $ae_visitor_update;
-		?>
-<table align="center" cellpadding="0" cellspacing="0" width="90%">
-  <tbody>
-    <tr align="left">
-      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vtoday.gif" alt="Today" title="Today"/></td>
-      <td>Today</td>
-      <td align="right"><?php echo number_format($values['startDay'], 0); ?></td>
-    </tr>
-    <tr align="left">
-      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vyesterday.gif" alt="Yesterday" title="Yesterday"/></td>
-      <td>Yesterday</td>
-      <td align="right"><?php echo number_format($values['startYest'], 0); ?></td>
-    </tr>
-    <tr align="left">
-      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vweek.gif" alt="This Week" title="This Week"/></td>
-      <td>This Week</td>
-      <td align="right"><?php echo number_format($values['startWeek'], 0); ?></td>
-    </tr>
-    <tr align="left">
-      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vmonth.gif" alt="This Month" title="This Month"/></td>
-      <td>This Month</td>
-      <td align="right"><?php echo number_format($values['startMonth'], 0); ?></td>
-    </tr>
-    <tr align="left">
-      <td><img class="mvc_peopleImg" src="<?php echo plugin_dir_url( __FILE__ ); ?>peoples/vall.gif" alt="All Days" title="All Days"/></td>
-      <td>All Days</td>
-      <td align="right"><?php echo number_format($values['startAll'], 0); ?></td>
-    </tr>
-  </tbody>
-</table>
-<a href="http://www.aldo-expert.com/" target="_blank">&nbsp;</a>
-		<?php
-		echo $after_widget;
-	} //end of widget
-
-	//Update widget options
-	function update($new_instance, $old_instance) {
-		$instance = $old_instance;
-		//get old variables
-		$instance['title']		= esc_attr($new_instance['title']);
-
-		return $instance;
-	} //end of update
-	
-	//Widget options form
-	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => __('AE Visitor','ae-visitor') ) );
-		
-		$title		= esc_attr($instance['title']);
-		?>
-		<p>
-		   <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:');?> 
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-		   </label>
-		</p>
-	<?php
-    } //end of form
-	
-}
-
-function ae_visitor_init() { register_widget('ae_visitor'); }
-
-add_action( 'widgets_init', 'ae_visitor_init' );
-//Register Widget
-
-$aeVC = new ae_visitor_counter();
-add_action('wp', array(&$aeVC, 'counter'));
-
+<?php //003c7
+// SISKO ENCODED IonCube G1
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');@dl($__ln);if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}@dl($__ln);}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the site administrator.');exit(199);
 ?>
+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
