@@ -4,8 +4,8 @@ Contributors: Adi Wicaksana
 Donate link: http://www.aldo-expert.com
 Tags: visitor, counter, web visit, web counter, simple counter
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.6
+Tested up to: 4.2.2
+Stable tag: 1.7
 
 very simple visitor plugins enables you to track number of visitors online in an easy to install.  
 
@@ -30,6 +30,14 @@ This section describes how to install the plugin and get it working.
 == Frequently Asked Questions ==
 
 == Changelog ==
+
+= 1.7 =
+
+fix some bug
+
+= 1.6 =
+
+fix some bug
 
 = 1.5 =
 
