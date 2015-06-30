@@ -3,7 +3,7 @@
 Plugin Name: AE Visitor
 Plugin URI: http://www.aldo-expert.com/
 Description: Display guest visitor of your web in day, yesterday, week, month, and all.
-Version: 1.6
+Version: 1.7
 Author: Adi Wicaksana (Aldo)
 Author URI: http://www.aldo-expert.com
 */
