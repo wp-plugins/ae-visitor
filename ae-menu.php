@@ -1,66 +1,88 @@
-<?php //003c7
-// SISKO ENCODED IonCube G1
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');@dl($__ln);if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}@dl($__ln);}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the site administrator.');exit(199);
+<?php
+if(!function_exists('find_ae_menu')) {
+	function find_ae_menu($handle, $sub = false) {
+		if(!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { return false; }
+		global $menu, $submenu;
+		$check_menu = $sub ? $submenu : $menu;
+		if(empty($check_menu)) { return false; }
+		foreach($check_menu as $k => $item) {
+			if($sub) {
+				foreach($item as $sm) {
+					if($handle == $sm[2]) { return true; }
+				}
+			} else {
+				if($handle == $item[2]) { return true; }
+			}
+		}
+		return false;
+	}
+}
+
+if(!function_exists('ae_add_menu_page')) {
+	function ae_add_menu_page() {
+		if(!find_ae_menu('ae_menu_page')) {
+			add_menu_page('AE Plugins', 'AE Plugins', 0, 'ae_menu_page', 'ae_menu_page_options', plugin_dir_url( __FILE__ ).'ae-icon.png' );
+			ae_add_submenu_page('AE Plugins', 'Dashboard', 0, 'ae_menu_page', 'ae_menu_page_options');
+		}
+	}
+}
+
+if(!function_exists('ae_add_submenu_page')) {
+	function ae_add_submenu_page($label, $menuItem, $activePlugin, $activePluginSlug, $activePluginFunction) {
+		add_submenu_page('ae_menu_page', $label, $menuItem, $activePlugin, $activePluginSlug, $activePluginFunction);
+	}
+}
+
+if(!function_exists('ae_menu_page_options')) {
+	function ae_menu_page_options() {
+		?>
+<div class="wrap">
+  <div id="icon-index" class="icon32"><br /></div>
+  <h2>AE Widget/Plugin</h2>
+  <div class="wrap">
+    <table class="form-table">
+      <tr valign="top">
+        <td><p>Thank you for using plugins and widgets that are created by Adi Putra Wicaksana. Plugins and widgets we made &#8203;&#8203;will be updated to keep them from having no error in the newer versions of wordpress.<br />
+        Hope you enjoy our work!</p>
+        <!--
+        <p class="description">If you support the Adi Wicaksana P. (The Programmer and Network) please use the donation button below.</p>
+        <p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="SC8RBMWNCCPDJ" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+        </p>
+        -->
+        </td>
+        <td><p>Terima kasih anda telah menggunakan plugins maupun widget yang dibuat oleh Adi Wicaksana Putra. Plugin dan widget buatan kami akan selalu diperbaharui untuk menjaga supaya tidak mengalami error pada versi wordpress yang lebih baru.<br />
+        Semoga anda menikmati hasil karya kami!</p>
+        <!--
+        <p class="description">Jika anda mendukung Adi Wicaksana P. (Sang Programmer dan Jaringan) silahkan gunakan tombol donasi dibawah ini.</p>
+        <p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="SC8RBMWNCCPDJ" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+        </p>
+        -->
+        </td>
+      </tr>
+    </table>
+  </div>
+  <p>&nbsp;</p>
+  <div id="icon-link-manager" class="icon32"><br /></div>
+  <h2>AE Site</h2>
+  <div class="wrap">
+    <p>Created by Adi Wicaksana P. <br />Expert of Programming and Networking</p>
+    <h4><a href="http://www.aldo-expert.com/" target="_blank">Please Visit Aldo-Expert.com &raquo;</a></h4>
+  </div>
+</div>
+		<?php
+	}
+}
+
 ?>
-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
-iLfI3W==
